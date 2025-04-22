@@ -5,4 +5,4 @@ add_executable(Farmr36s Game/main.cpp)
 
 find_package(SDL2 REQUIRED)
 
-target_link_libraries(Farmr36s PRIVATE SDL2::SDL2)
+target_link_libraries(Farmr36s PRIVATE SDL2)
