@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.13)
-project(FarmR36s)
+project(Farmr36s)
 
 add_executable(Farmr36s Game/main.cpp)
 
