@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/FarmR36s.dir/Game/main.cpp.o -o FarmR36s 
