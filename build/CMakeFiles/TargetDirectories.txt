@@ -1,0 +1,3 @@
+/home/dsanta/Documentos/FarmR36s/build/CMakeFiles/Farmr36s.dir
+/home/dsanta/Documentos/FarmR36s/build/CMakeFiles/edit_cache.dir
+/home/dsanta/Documentos/FarmR36s/build/CMakeFiles/rebuild_cache.dir
