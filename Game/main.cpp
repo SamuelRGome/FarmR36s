@@ -1,19 +1,52 @@
 #include <SDL2/SDL.h>
+#include <stdio.h>
 
+const int SCREEN_WIDTH = 640;
+const int SCREEN_HEIGHT = 480;
 int main(int argc, char *argv[]) {
-    SDL_Init(SDL_INIT_VIDEO);
+    
+    // Janela que vai ser renderizada
+    SDL_Window* window = NULL;
 
-    SDL_Window *window = SDL_CreateWindow("FarmR36s", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, 0);
-    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
+    // Surface contido pela janela
+    SDL_Surface* screenSurface = NULL;
 
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderClear(renderer);
+    // Inicializa o SDL
+    if( SDL_Init( SDL_INIT_VIDEO) < 0) {
 
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-    SDL_RenderDrawLine(renderer, 0, 0, 800, 600);
-    SDL_RenderDrawLine(renderer, 800, 0, 0, 600);
+        printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+        return 1;
+    } else {
+        //Cria a janela
+        window = SDL_CreateWindow( "FarmR36s", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+        if (window == NULL) {
+            printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
+            return 1;
+        }
+    } 
 
+    // Pega a surface da janela
+    screenSurface = SDL_GetWindowSurface(window);
 
+    //Pinta a surface de branco
+    SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
+
+    // Atualiza a janela
+    SDL_UpdateWindowSurface(window);
+
+    // janela aberta até fechar
+    SDL_Event e;
+    bool quit = false;
+    while (!quit) {
+        while (SDL_PollEvent(&e) != 0) {
+            if (e.type == SDL_QUIT) {
+                quit = true;
+            }
+        }
+    }
+
+    SDL_DestroyWindow(window);
+    window = NULL;
 
     SDL_Quit();
     return 0;
