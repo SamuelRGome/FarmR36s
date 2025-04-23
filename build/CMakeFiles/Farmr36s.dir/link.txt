@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/Farmr36s.dir/Game/main.cpp.o -o Farmr36s  -lSDL2 
